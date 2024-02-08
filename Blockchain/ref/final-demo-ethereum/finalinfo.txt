@@ -1,0 +1,41 @@
+ssh local@private-blockchain.f4.htw-berlin.de
+Q,Xt3uQYH
+
+node1:0x0e835C4548fAdfCb9bD7958Ec8B824044a720a46
+pwd:123456
+
+node2:0x2850b7DA4fCB3316c11E06CabA423AF4EFaaDCAC
+pwd:123456
+
+
+
+create bnode
+bootnode -genkey boot.key
+
+mkdir node1
+geth --datadir "./data" account new
+
+to start bnode
+bootnode -nodekey boot.key -verbosity 7 -addr "127.0.0.1:30301"
+enode://c1187c87aa57bb705d8e1436a006efeb25b40134e4a5bb5a10654759f44ee2a8ba17a80520c1e78476a65e741df86fc480a5b1fd5b73aadb06f8b6bda70517b8@127.0.0.1:0?discport=30301
+
+genesis init
+geth --datadir ./data init ../genesis.json
+
+
+node1:
+geth --datadir "./data" --port 30304 --bootnodes enode://c1187c87aa57bb705d8e1436a006efeb25b40134e4a5bb5a10654759f44ee2a8ba17a80520c1e78476a65e741df86fc480a5b1fd5b73aadb06f8b6bda70517b8@127.0.0.1:0?discport=30301 --rpc.enabledeprecatedpersonal --allow-insecure-unlock --http --authrpc.port "8551" --http.corsdomain="https://remix.ethereum.org" --http.api web3,eth,debug,personal,net --networkid 123456 --unlock 0x0e835C4548fAdfCb9bD7958Ec8B824044a720a46 --password pwd.txt --mine --miner.etherbase=0x0e835C4548fAdfCb9bD7958Ec8B824044a720a46
+
+admin.nodeInfo
+
+node1 enode
+enode://6e186f0da16cfbe38b4c60894c420686fa2151ca15bac198c8f6eb0dba4825135a539aaa8a82d9de7d210ec2f0b8884bc684ede4817fba87a09bb8d79ab4491c@127.0.0.1:30304
+
+node2 
+geth --datadir "./data" --port 30309 --bootnodes enode://6e186f0da16cfbe38b4c60894c420686fa2151ca15bac198c8f6eb0dba4825135a539aaa8a82d9de7d210ec2f0b8884bc684ede4817fba87a09bb8d79ab4491c@141.45.212.243:30304 --networkid 123456 --ipcdisable --allow-insecure-unlock --authrpc.port "8567" --unlock 0x2850b7DA4fCB3316c11E06CabA423AF4EFaaDCAC --password pwd.txt
+
+
+balance:
+eth.getBalance("0x0e835C4548fAdfCb9bD7958Ec8B824044a720a46")
+eth.getBalance("0x2850b7DA4fCB3316c11E06CabA423AF4EFaaDCAC")
+eth.sendTransaction({from:"0x0e835C4548fAdfCb9bD7958Ec8B824044a720a46", to:"0x2850b7DA4fCB3316c11E06CabA423AF4EFaaDCAC",value:web3.toWei(0.000001,"ether"),gasPrice:web3.toWei(1, 'gwei')})

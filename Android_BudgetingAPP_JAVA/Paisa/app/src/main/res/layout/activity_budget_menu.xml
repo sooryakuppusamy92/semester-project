@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:layout_centerInParent="true"
+    tools:context=".budget.BudgetMenu">
+
+    <TextView
+        android:id="@+id/txtUsernameHeader"
+        android:layout_width="fill_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:gravity="center"
+        android:textSize="30sp"
+        android:textStyle="italic"
+        android:textAllCaps="true"
+        android:textColor="@color/black"
+        android:text="HEADING" />
+
+    <Button
+        android:id="@+id/buttonAddBuget"
+        android:layout_width="fill_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:gravity="center"
+        android:text="Add Budget" />
+
+    <Button
+        android:id="@+id/buttonAddExpense"
+        android:layout_width="fill_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:gravity="center"
+        android:text="Add Expense" />
+
+    <Button
+        android:id="@+id/buttonViewExpense"
+        android:layout_width="fill_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:gravity="center"
+        android:text="ViewExpense" />
+
+</LinearLayout>

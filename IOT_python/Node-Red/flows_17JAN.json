@@ -1,0 +1,52 @@
+[
+    {
+        "id": "45e135f7d2d6bdb3",
+        "type": "mqtt in",
+        "z": "716670a600e4192d",
+        "name": "",
+        "topic": "M_IoT/soorya/lastwill",
+        "qos": "1",
+        "datatype": "auto-detect",
+        "broker": "0968fc33f51eb806",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 800,
+        "y": 260,
+        "wires": [
+            [
+                "3ede74135683c872",
+                "a96866d134aa5c41"
+            ]
+        ]
+    },
+    {
+        "id": "0968fc33f51eb806",
+        "type": "mqtt-broker",
+        "name": "mosquitto",
+        "broker": "10.10.3.33",
+        "port": "1888",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "true",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    }
+]

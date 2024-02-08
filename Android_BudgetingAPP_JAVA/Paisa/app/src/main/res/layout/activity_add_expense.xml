@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:gravity="center_vertical"
+    android:orientation="vertical"
+    android:padding="16dp"
+    tools:context=".budget.AddExpense">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:text="Enter Expense details"
+        android:textColor="@color/design_default_color_error"
+        android:textAllCaps="false"
+        android:textSize="20dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Budget Left"
+        android:textColor="@color/black"
+        android:textAllCaps="false"
+        android:textSize="15dp"
+        />
+
+    <EditText
+        android:id="@+id/BudgetLeft"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Budget Left"
+        />
+
+    <!-- Password  -->
+    <EditText
+        android:id="@+id/EnterItem"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:hint="Enter item"
+        />
+
+    <!-- Repeat Password  -->
+    <EditText
+        android:id="@+id/ItemCost"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:inputType="number"
+        android:hint="Enter item cost"
+        />
+
+
+    <!-- Login Button -->
+    <Button
+        android:id="@+id/saveItem"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Save" />
+
+</LinearLayout>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Text Analysis</title>
+</head>
+<body style="background-color:powderblue;">
+    <h1>Sentiment Analysis</h1>
+    <form>
+        <p><label for="mood">How are you feeling today ?</label></p>
+        <textarea id="mood" name="mood" rows="5" cols="50"> </textarea>
+        <br>            
+      </form>
+      <div id="img_home"></div>
+      <button id="submit" onclick="delayedButtonClick()">enter </button>    
+      <button id="viewresult" >viewresult</button>
+</body>
+
+<script>
+
+function delayedButtonClick() {        
+        document.getElementById("viewresult").disabled = true;        
+        setTimeout(function() {            
+            document.getElementById("viewresult").disabled = false;
+        }, 4000); 
+    }
+
+window.onload = function() {
+  document.getElementById("viewresult").disabled = true;
+    document.getElementById('submit').addEventListener('click', function () {      
+      var val = document.getElementById('mood').value;               
+        fetch('https://9vuy85lpd6.execute-api.eu-west-1.amazonaws.com/default/textanalysis_getusertext?text='+val)
+        .then((response) => {                   
+          return response.text();
+        })
+        .then((myContent) => {         
+        document.getElementById('img_home').innerHTML = myContent;
+        })       
+
+    }, false);
+
+    document.getElementById('viewresult').addEventListener('click', function () {
+      var myElement = document.getElementById("img_home");
+        if (myElement.innerHTML == "") {   
+            alert("please enter your text");
+            return false;
+        }  
+        fetch('https://38uou6g0oj.execute-api.eu-west-1.amazonaws.com/default/textanalysis_GetSentimentImage')
+        .then((response) => {  
+          return response.blob();
+        })
+        .then((blob) => {
+          var imgUrl = URL.createObjectURL(blob);          
+            var img = new Image();
+            img.src = imgUrl;
+            document.getElementById('img_home').innerHTML = 'Your text mood';
+          document.getElementById('img_home').appendChild(img);
+        });
+
+    }, false);
+}
+
+  </script>
+</html>

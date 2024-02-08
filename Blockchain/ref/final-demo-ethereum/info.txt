@@ -1,0 +1,32 @@
+node1:0x1669A246063AA439CD5A9C071C2F5d6b4F1e0cb0
+pwd:1234
+
+node2:0x739ae6402E4b12Eda3dA0439CcEac110F90CAcdc
+pwd:1234
+
+bnode enode
+enode://93c69d7147503d4d38d0dc427cbd60e4b67d29e1fe6b6fed081e1944feff94413da2f14750817eefa9cae3a347db8261b670352fb340c15007a5ae9bc89734c1@127.0.0.1:0?discport=30301
+
+node1:
+geth --datadir "./data" --port 30304 --bootnodes enode://93c69d7147503d4d38d0dc427cbd60e4b67d29e1fe6b6fed081e1944feff94413da2f14750817eefa9cae3a347db8261b670352fb340c15007a5ae9bc89734c1@127.0.0.1:0?discport=30301 --rpc.enabledeprecatedpersonal --allow-insecure-unlock --http --authrpc.port "8551" --http.corsdomain="https://remix.ethereum.org" --http.api web3,eth,debug,personal,net --networkid 123456 --unlock 0x1669A246063AA439CD5A9C071C2F5d6b4F1e0cb0 --password pwd.txt --mine --miner.etherbase=0x1669A246063AA439CD5A9C071C2F5d6b4F1e0cb0
+
+node1 enode:
+enode://90a2cded76c8286ab9647f36df6158d913b26b36ae9a8f7424db6c28ad7d53af78392efbf9bfe6d08fbc44a49a6efecd395e51c57f4e976553f46cb8ed19d19b@127.0.0.1:30304
+
+
+node2:
+
+node2 
+geth --datadir "./data" --port 30309 --bootnodes enode://90a2cded76c8286ab9647f36df6158d913b26b36ae9a8f7424db6c28ad7d53af78392efbf9bfe6d08fbc44a49a6efecd395e51c57f4e976553f46cb8ed19d19b@141.45.212.243:30304 --networkid 123456  --allow-insecure-unlock --authrpc.port "8567" --unlock 0x739ae6402E4b12Eda3dA0439CcEac110F90CAcdc --password pwd.txt
+
+
+balance:
+eth.getBalance("0x739ae6402E4b12Eda3dA0439CcEac110F90CAcdc")
+eth.getBalance("0xad4502669E98ed44EcdAA8EE1a630036cD6E93d0")
+eth.sendTransaction({from:"0x739ae6402E4b12Eda3dA0439CcEac110F90CAcdc", to:"0xad4502669E98ed44EcdAA8EE1a630036cD6E93d0",value:web3.toWei(0.000001,"ether"),gasPrice:web3.toWei(1, 'gwei')})
+
+clique.propose("0x1669A246063AA439CD5A9C071C2F5d6b4F1e0cb0", false)
+clique.propose("{NODE_ADDRESS}", true)
+
+
+clique.propose("0x739ae6402E4b12Eda3dA0439CcEac110F90CAcdc", true)

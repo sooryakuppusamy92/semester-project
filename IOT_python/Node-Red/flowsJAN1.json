@@ -1,0 +1,1471 @@
+[
+    {
+        "id": "8344d7d5dd6afb5e",
+        "type": "tab",
+        "label": "Flow 3",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "258dbe35256fd2bd",
+        "type": "ui_led",
+        "z": "8344d7d5dd6afb5e",
+        "order": 1,
+        "group": "a467676f406c89ea",
+        "width": 0,
+        "height": 0,
+        "label": "127.0.0.1",
+        "labelPlacement": "left",
+        "labelAlignment": "left",
+        "colorForValue": [
+            {
+                "color": "#ff0000",
+                "value": "false",
+                "valueType": "bool"
+            },
+            {
+                "color": "#008000",
+                "value": "true",
+                "valueType": "bool"
+            }
+        ],
+        "allowColorForValueInMessage": true,
+        "shape": "square",
+        "showGlow": true,
+        "name": "status",
+        "x": 450,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "7f8d90a5beefdc65",
+        "type": "ping",
+        "z": "8344d7d5dd6afb5e",
+        "protocol": "Automatic",
+        "mode": "triggered",
+        "name": "",
+        "host": "127.0.0.1",
+        "timer": "20",
+        "inputs": 1,
+        "x": 220,
+        "y": 40,
+        "wires": [
+            [
+                "fe6d19c842ce0bc4",
+                "3736c3d2e819e27f"
+            ]
+        ]
+    },
+    {
+        "id": "fe6d19c842ce0bc4",
+        "type": "debug",
+        "z": "8344d7d5dd6afb5e",
+        "name": "debug 2",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 560,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "55c72f85279dfe85",
+        "type": "inject",
+        "z": "8344d7d5dd6afb5e",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "5",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 70,
+        "y": 60,
+        "wires": [
+            [
+                "7f8d90a5beefdc65"
+            ]
+        ]
+    },
+    {
+        "id": "3736c3d2e819e27f",
+        "type": "function",
+        "z": "8344d7d5dd6afb5e",
+        "name": "function 6",
+        "func": "let val=false\nif (msg.payload ==false)\n    val=false\nelse\n    val=true\nmsg.payload = val;\n  \nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 280,
+        "y": 160,
+        "wires": [
+            [
+                "258dbe35256fd2bd",
+                "850913d1d20c0276"
+            ]
+        ]
+    },
+    {
+        "id": "850913d1d20c0276",
+        "type": "debug",
+        "z": "8344d7d5dd6afb5e",
+        "name": "debug 3",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 440,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "b77bde05a0fca437",
+        "type": "mqtt in",
+        "z": "8344d7d5dd6afb5e",
+        "name": "",
+        "topic": "M_IoT/soorya/temp",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "0cf2eaf7e77f3a40",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 110,
+        "y": 400,
+        "wires": [
+            [
+                "67d2927385f548cd",
+                "8a4aad10f4ce8a1a",
+                "94d23d3bf4ecaf88",
+                "a98a3ca1e0fb0c1f"
+            ]
+        ]
+    },
+    {
+        "id": "67d2927385f548cd",
+        "type": "ui_gauge",
+        "z": "8344d7d5dd6afb5e",
+        "name": "",
+        "group": "c35660ea741b7fc3",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Temperature",
+        "label": "°C",
+        "format": "{{value}}",
+        "min": "-20",
+        "max": "50",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "diff": false,
+        "className": "",
+        "x": 890,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "e6ed0810a1b6c195",
+        "type": "mqtt in",
+        "z": "8344d7d5dd6afb5e",
+        "name": "",
+        "topic": "M_IoT/soorya/humi",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "0cf2eaf7e77f3a40",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 110,
+        "y": 460,
+        "wires": [
+            [
+                "17d13c2d88cd6865",
+                "de10fe5c475ca7e1",
+                "988dc7980841d1be",
+                "5b66a2ead5770e5a"
+            ]
+        ]
+    },
+    {
+        "id": "17d13c2d88cd6865",
+        "type": "ui_gauge",
+        "z": "8344d7d5dd6afb5e",
+        "name": "",
+        "group": "c35660ea741b7fc3",
+        "order": 4,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Humidity",
+        "label": "%",
+        "format": "{{value}}",
+        "min": "0",
+        "max": "100",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "diff": false,
+        "className": "",
+        "x": 920,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "2afbe61ddfad137f",
+        "type": "mqtt in",
+        "z": "8344d7d5dd6afb5e",
+        "name": "",
+        "topic": "M_IoT/Anusha/temp",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "d0a0773c6334b5fd",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 130,
+        "y": 240,
+        "wires": [
+            [
+                "644553530ee31e49"
+            ]
+        ]
+    },
+    {
+        "id": "644553530ee31e49",
+        "type": "mqtt out",
+        "z": "8344d7d5dd6afb5e",
+        "name": "",
+        "topic": "M_IoT/soorya/temp",
+        "qos": "0",
+        "retain": "true",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "0cf2eaf7e77f3a40",
+        "x": 750,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "063bbd414e6d7063",
+        "type": "mqtt in",
+        "z": "8344d7d5dd6afb5e",
+        "name": "",
+        "topic": "M_IoT/Anusha/humi",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "d0a0773c6334b5fd",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 130,
+        "y": 300,
+        "wires": [
+            [
+                "80c32bcd30ee8beb"
+            ]
+        ]
+    },
+    {
+        "id": "80c32bcd30ee8beb",
+        "type": "mqtt out",
+        "z": "8344d7d5dd6afb5e",
+        "name": "",
+        "topic": "M_IoT/soorya/humi",
+        "qos": "",
+        "retain": "true",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "0cf2eaf7e77f3a40",
+        "x": 730,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "8a4aad10f4ce8a1a",
+        "type": "function",
+        "z": "8344d7d5dd6afb5e",
+        "name": "Temperature_Threshold_Check",
+        "func": "const temp_Min = 15;\nconst temp_Max = 30;\n\nif (msg.payload < temp_Min || msg.payload > temp_Max) {\n\n    msg.payload = {\n        chatId: 761490929,\n        type: 'message',\n        content: \"Alarm: The temperature is not within the threshold limit (10°C - 30°C)! Current Temperature:\" + msg.payload +\"°C\"\n    };\n    msg.topic = \"ALARM\";\n    return msg;\n\n} else {\n    msg.topic = \"NORMAL\";\n    msg.payload = {   \n        type: null,\n    content: \"Normal Temperature\"\n    };\n    return msg;\n}",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 370,
+        "y": 520,
+        "wires": [
+            [
+                "47d532f264e9e14c",
+                "cd470ac8809a6a29"
+            ]
+        ]
+    },
+    {
+        "id": "de10fe5c475ca7e1",
+        "type": "function",
+        "z": "8344d7d5dd6afb5e",
+        "name": "Temperature_Humidity_Check",
+        "func": "const hum_min = 30;\nconst hum_max = 60;\n\nif (msg.payload > hum_max || msg.payload < hum_min) {\n\n    msg.payload = {\n        chatId: 761490929,\n        type: 'message',\n        content: \"Alarm: The humidity is not within the threshold limit(30%-60%)! Current Humidity:\" + msg.payload +\"%\"\n        \n    };\n    msg.topic = \"ALARM\";\n    return msg;\n\n} else {\n    msg.topic = \"NORMAL\";\n    msg.payload = {\n        type: null,\n        content: \"Normal Humidity\"\n    };\n    return msg;\n}",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 350,
+        "y": 700,
+        "wires": [
+            [
+                "61fcda550992c0e0",
+                "cd470ac8809a6a29"
+            ]
+        ]
+    },
+    {
+        "id": "86cc4573b5b357a4",
+        "type": "telegram sender",
+        "z": "8344d7d5dd6afb5e",
+        "name": "",
+        "bot": "69fad27347077f63",
+        "haserroroutput": false,
+        "outputs": 1,
+        "x": 1050,
+        "y": 660,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "47d532f264e9e14c",
+        "type": "ui_template",
+        "z": "8344d7d5dd6afb5e",
+        "group": "8d71170cb9e4c2fa",
+        "name": "",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "format": "<div ng-if=\"msg.topic === 'ALARM'\" style=\"color: red; font-weight: bold;\">\n    {{msg.payload.content}}\n</div>\n<div ng-if=\"msg.topic === 'NORMAL'\" style=\"color: green; font-weight: bold;\">\n    Normal Temperature\n</div>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 740,
+        "y": 600,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "61fcda550992c0e0",
+        "type": "ui_template",
+        "z": "8344d7d5dd6afb5e",
+        "group": "8d71170cb9e4c2fa",
+        "name": "",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "format": "<div ng-if=\"msg.topic === 'ALARM'\" style=\"color: red; font-weight: bold;\">\n    {{msg.payload.content}}\n</div>\n<div ng-if=\"msg.topic === 'NORMAL'\" style=\"color: green; font-weight: bold;\">\n    Normal Humidity\n</div>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 700,
+        "y": 700,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "4dec12722eaa1c5d",
+        "type": "inject",
+        "z": "8344d7d5dd6afb5e",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 80,
+        "y": 1100,
+        "wires": [
+            [
+                "14e2ef12b0972f6f"
+            ]
+        ]
+    },
+    {
+        "id": "7776968e07bfaece",
+        "type": "debug",
+        "z": "8344d7d5dd6afb5e",
+        "name": "debug 4",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 760,
+        "y": 920,
+        "wires": []
+    },
+    {
+        "id": "f60334b065b46b64",
+        "type": "change",
+        "z": "8344d7d5dd6afb5e",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.tempc",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 460,
+        "y": 940,
+        "wires": [
+            [
+                "7776968e07bfaece",
+                "0afc3244b8d08385"
+            ]
+        ]
+    },
+    {
+        "id": "61ee58a9e668edfa",
+        "type": "change",
+        "z": "8344d7d5dd6afb5e",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.humidity",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 560,
+        "y": 1180,
+        "wires": [
+            [
+                "97011f786ca1dc0a",
+                "9f4dcfc19206e935"
+            ]
+        ]
+    },
+    {
+        "id": "97011f786ca1dc0a",
+        "type": "debug",
+        "z": "8344d7d5dd6afb5e",
+        "name": "debug 5",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 760,
+        "y": 1060,
+        "wires": []
+    },
+    {
+        "id": "0afc3244b8d08385",
+        "type": "ui_gauge",
+        "z": "8344d7d5dd6afb5e",
+        "name": "",
+        "group": "f999e0d74b6a91ce",
+        "order": 4,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "TEMPERATURE",
+        "label": "°C",
+        "format": "{{value}}",
+        "min": "-20",
+        "max": "40",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "diff": false,
+        "className": "",
+        "x": 810,
+        "y": 980,
+        "wires": []
+    },
+    {
+        "id": "9f4dcfc19206e935",
+        "type": "ui_gauge",
+        "z": "8344d7d5dd6afb5e",
+        "name": "",
+        "group": "f999e0d74b6a91ce",
+        "order": 5,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "HUMIDITY",
+        "label": "%",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "diff": false,
+        "className": "",
+        "x": 810,
+        "y": 1160,
+        "wires": []
+    },
+    {
+        "id": "603d3727fc207f65",
+        "type": "ui_form",
+        "z": "8344d7d5dd6afb5e",
+        "name": "",
+        "label": "Please enter desired location detail",
+        "group": "f999e0d74b6a91ce",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "options": [
+            {
+                "label": "city",
+                "value": "city",
+                "type": "text",
+                "required": true,
+                "rows": null
+            },
+            {
+                "label": "country",
+                "value": "country",
+                "type": "text",
+                "required": true,
+                "rows": null
+            }
+        ],
+        "formValue": {
+            "city": "",
+            "country": ""
+        },
+        "payload": "",
+        "submit": "submit",
+        "cancel": "cancel",
+        "topic": "input",
+        "topicType": "msg",
+        "splitLayout": "",
+        "className": "",
+        "x": 140,
+        "y": 1360,
+        "wires": [
+            [
+                "0cb486f4d79ea9f0"
+            ]
+        ]
+    },
+    {
+        "id": "0cb486f4d79ea9f0",
+        "type": "change",
+        "z": "8344d7d5dd6afb5e",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "input",
+                "pt": "global",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 380,
+        "y": 1360,
+        "wires": [
+            [
+                "5c26251ffbcaa4b1",
+                "500c70768de27984"
+            ]
+        ]
+    },
+    {
+        "id": "5c26251ffbcaa4b1",
+        "type": "debug",
+        "z": "8344d7d5dd6afb5e",
+        "name": "debug 7",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 700,
+        "y": 1360,
+        "wires": []
+    },
+    {
+        "id": "500c70768de27984",
+        "type": "function",
+        "z": "8344d7d5dd6afb5e",
+        "name": "function 7",
+        "func": "var measure=global.get(\"input\")\n\nmsg={\nlocation:{\ncity:measure.city,\ncountry:measure.country\n}\n}\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 440,
+        "y": 1260,
+        "wires": [
+            [
+                "14e2ef12b0972f6f",
+                "b3d89bf2f6bee7db"
+            ]
+        ]
+    },
+    {
+        "id": "14e2ef12b0972f6f",
+        "type": "openweathermap",
+        "z": "8344d7d5dd6afb5e",
+        "name": "",
+        "wtype": "current",
+        "lon": "",
+        "lat": "",
+        "city": "",
+        "country": "",
+        "language": "en",
+        "x": 270,
+        "y": 1160,
+        "wires": [
+            [
+                "f60334b065b46b64",
+                "61ee58a9e668edfa"
+            ]
+        ]
+    },
+    {
+        "id": "3cb9149f994f27c5",
+        "type": "ui_template",
+        "z": "8344d7d5dd6afb5e",
+        "group": "f999e0d74b6a91ce",
+        "name": "",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "format": "<div colour=\"purple\">\n    <p>Verify search attribute before submitting the form :</p>\n    <a href=\"https://openweathermap.org/find?q=\" target=\"_blank\">Open weather Map Search</a>\n</div>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 60,
+        "y": 1260,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "b3d89bf2f6bee7db",
+        "type": "debug",
+        "z": "8344d7d5dd6afb5e",
+        "name": "debug 8",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 680,
+        "y": 1280,
+        "wires": []
+    },
+    {
+        "id": "dd720d7a8fc655d0",
+        "type": "ui_button",
+        "z": "8344d7d5dd6afb5e",
+        "name": "",
+        "group": "f999e0d74b6a91ce",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "RESET",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "0",
+        "payloadType": "num",
+        "topic": "",
+        "topicType": "msg",
+        "x": 520,
+        "y": 1060,
+        "wires": [
+            [
+                "0afc3244b8d08385",
+                "9f4dcfc19206e935"
+            ]
+        ]
+    },
+    {
+        "id": "94d23d3bf4ecaf88",
+        "type": "ui_slider",
+        "z": "8344d7d5dd6afb5e",
+        "name": "",
+        "label": "Temperature slider",
+        "tooltip": "",
+        "group": "c35660ea741b7fc3",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "outs": "all",
+        "topic": "topic",
+        "topicType": "msg",
+        "min": "-20",
+        "max": "50",
+        "step": 1,
+        "className": "",
+        "x": 350,
+        "y": 360,
+        "wires": [
+            [
+                "67d2927385f548cd",
+                "8a4aad10f4ce8a1a"
+            ]
+        ]
+    },
+    {
+        "id": "988dc7980841d1be",
+        "type": "ui_slider",
+        "z": "8344d7d5dd6afb5e",
+        "name": "",
+        "label": "Humidity slider",
+        "tooltip": "",
+        "group": "c35660ea741b7fc3",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "outs": "all",
+        "topic": "topic",
+        "topicType": "msg",
+        "min": 0,
+        "max": "100",
+        "step": 1,
+        "className": "",
+        "x": 360,
+        "y": 620,
+        "wires": [
+            [
+                "de10fe5c475ca7e1",
+                "17d13c2d88cd6865"
+            ]
+        ]
+    },
+    {
+        "id": "dac58a6e77877cd5",
+        "type": "mqtt in",
+        "z": "8344d7d5dd6afb5e",
+        "name": "",
+        "topic": "M_IoT/+/temp",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "d0a0773c6334b5fd",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 1190,
+        "y": 780,
+        "wires": [
+            [
+                "0780d8b0f63bb391",
+                "f11f563daeb64cf7"
+            ]
+        ]
+    },
+    {
+        "id": "385c622446cb93d1",
+        "type": "mqtt in",
+        "z": "8344d7d5dd6afb5e",
+        "name": "",
+        "topic": "M_IoT/+/humi",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "d0a0773c6334b5fd",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 1250,
+        "y": 880,
+        "wires": [
+            [
+                "666aefe40b73b2bd",
+                "e2252c39aa42b18a"
+            ]
+        ]
+    },
+    {
+        "id": "0780d8b0f63bb391",
+        "type": "debug",
+        "z": "8344d7d5dd6afb5e",
+        "name": "debug 9",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1440,
+        "y": 720,
+        "wires": []
+    },
+    {
+        "id": "666aefe40b73b2bd",
+        "type": "debug",
+        "z": "8344d7d5dd6afb5e",
+        "name": "debug 10",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1480,
+        "y": 860,
+        "wires": []
+    },
+    {
+        "id": "f11f563daeb64cf7",
+        "type": "ui_chart",
+        "z": "8344d7d5dd6afb5e",
+        "name": "",
+        "group": "b23176225cacfcf9",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "label": "Temperature chart",
+        "chartType": "line",
+        "legend": "true",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "-20",
+        "ymax": "50",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 1550,
+        "y": 660,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "e2252c39aa42b18a",
+        "type": "ui_chart",
+        "z": "8344d7d5dd6afb5e",
+        "name": "",
+        "group": "b23176225cacfcf9",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "label": "humidity chart",
+        "chartType": "line",
+        "legend": "true",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "0",
+        "ymax": "100",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 1560,
+        "y": 960,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "a98a3ca1e0fb0c1f",
+        "type": "mqtt out",
+        "z": "8344d7d5dd6afb5e",
+        "name": "M_IoT/soorya/temp",
+        "topic": "M_IoT/soorya/temp",
+        "qos": "0",
+        "retain": "true",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "d0a0773c6334b5fd",
+        "x": 90,
+        "y": 580,
+        "wires": []
+    },
+    {
+        "id": "5b66a2ead5770e5a",
+        "type": "mqtt out",
+        "z": "8344d7d5dd6afb5e",
+        "name": "",
+        "topic": "M_IoT/soorya/humi",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "d0a0773c6334b5fd",
+        "x": 90,
+        "y": 640,
+        "wires": []
+    },
+    {
+        "id": "cd470ac8809a6a29",
+        "type": "function",
+        "z": "8344d7d5dd6afb5e",
+        "name": "function 8",
+        "func": "if(msg.topic === 'NORMAL')\n{\n    msg=null\n}\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 540,
+        "y": 760,
+        "wires": [
+            [
+                "86cc4573b5b357a4"
+            ]
+        ]
+    },
+    {
+        "id": "2d2b90c7379fba45",
+        "type": "mqtt in",
+        "z": "8344d7d5dd6afb5e",
+        "name": "",
+        "topic": "M_IoT/soorya1/lastwill",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "d0a0773c6334b5fd",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 1160,
+        "y": 240,
+        "wires": [
+            [
+                "612913acfd5fd09c",
+                "a16ad3270f031a95"
+            ]
+        ]
+    },
+    {
+        "id": "dbbff337c828950c",
+        "type": "ui_template",
+        "z": "8344d7d5dd6afb5e",
+        "group": "625edf5398edab7e",
+        "name": "",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "format": "<div ng-if=\"msg.topic == 'ALARM'\" style=\"color: red; font-weight: bold;\">\n    {{msg.payload.content}}\n</div>\n<div ng-if=\"msg.topic == null\" style=\"color: green; font-weight: bold;\">\n    No Last Will\n</div>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 1440,
+        "y": 300,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "612913acfd5fd09c",
+        "type": "function",
+        "z": "8344d7d5dd6afb5e",
+        "name": "function 9",
+        "func": "if (msg.payload != null) {\n var value = msg.payload\n    msg.payload = {\n        chatId: 761490929,\n        type: 'message',\n        content: \"Alarm:last will message : \"+value\n    };\n    msg.topic = \"ALARM\";\n    return msg;\n\n} else {\n    msg.topic = null;\n    \n    return msg;\n}",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1380,
+        "y": 180,
+        "wires": [
+            [
+                "dbbff337c828950c",
+                "86cc4573b5b357a4"
+            ]
+        ]
+    },
+    {
+        "id": "2fad29c287422877",
+        "type": "ui_toast",
+        "z": "8344d7d5dd6afb5e",
+        "position": "dialog",
+        "displayTime": "3",
+        "highlight": "",
+        "sendall": true,
+        "outputs": 1,
+        "ok": "OK",
+        "cancel": "CANCEL",
+        "raw": false,
+        "className": "",
+        "topic": "",
+        "name": "",
+        "x": 1170,
+        "y": 80,
+        "wires": [
+            [
+                "e3391a806f30ce61",
+                "c0d6e4cfc033a873"
+            ]
+        ]
+    },
+    {
+        "id": "e3391a806f30ce61",
+        "type": "debug",
+        "z": "8344d7d5dd6afb5e",
+        "name": "debug 11",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1440,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "a16ad3270f031a95",
+        "type": "change",
+        "z": "8344d7d5dd6afb5e",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "Broker Last will message",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1060,
+        "y": 160,
+        "wires": [
+            [
+                "14205ba120f32ee1"
+            ]
+        ]
+    },
+    {
+        "id": "14205ba120f32ee1",
+        "type": "function",
+        "z": "8344d7d5dd6afb5e",
+        "name": "function 10",
+        "func": "if (msg.payload != null) {\n var value = msg.payload\n   msg.payload = \"Broker disconnected!Broker last will message\"+value+\" do you want to reset value \"\n\n} \nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1010,
+        "y": 40,
+        "wires": [
+            [
+                "2fad29c287422877"
+            ]
+        ]
+    },
+    {
+        "id": "f5e1553ca7a92031",
+        "type": "change",
+        "z": "8344d7d5dd6afb5e",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "0",
+                "tot": "num"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1100,
+        "y": 340,
+        "wires": [
+            [
+                "67d2927385f548cd",
+                "17d13c2d88cd6865"
+            ]
+        ]
+    },
+    {
+        "id": "c0d6e4cfc033a873",
+        "type": "switch",
+        "z": "8344d7d5dd6afb5e",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "OK",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 1250,
+        "y": 300,
+        "wires": [
+            [
+                "f5e1553ca7a92031"
+            ]
+        ]
+    },
+    {
+        "id": "dc1d597f5082fe70",
+        "type": "ui_spacer",
+        "z": "8344d7d5dd6afb5e",
+        "name": "spacer",
+        "group": "226b9b099aa57d29",
+        "order": 2,
+        "width": 6,
+        "height": 1
+    },
+    {
+        "id": "a467676f406c89ea",
+        "type": "ui_group",
+        "name": "Broker status",
+        "tab": "d18a4ed390cc0a38",
+        "order": 1,
+        "disp": true,
+        "width": 5,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "0cf2eaf7e77f3a40",
+        "type": "mqtt-broker",
+        "name": "localmosquittobroker",
+        "broker": "127.0.0.1",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "5",
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "true",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "disconnecting",
+        "closeQos": "0",
+        "closeRetain": "true",
+        "closePayload": "disconnecting",
+        "closeMsg": {},
+        "willTopic": "will",
+        "willQos": "0",
+        "willRetain": "true",
+        "willPayload": "will",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "c35660ea741b7fc3",
+        "type": "ui_group",
+        "name": "Room Data [H106]",
+        "tab": "d18a4ed390cc0a38",
+        "order": 2,
+        "disp": true,
+        "width": "5",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "d0a0773c6334b5fd",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "broker.hivemq.com",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "5",
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "69fad27347077f63",
+        "type": "telegram bot",
+        "botname": "iot_local_sooryabot",
+        "usernames": "",
+        "chatids": "",
+        "baseapiurl": "",
+        "updatemode": "polling",
+        "pollinterval": "300",
+        "usesocks": false,
+        "sockshost": "",
+        "socksprotocol": "socks5",
+        "socksport": "6667",
+        "socksusername": "anonymous",
+        "sockspassword": "",
+        "bothost": "",
+        "botpath": "",
+        "localbotport": "8443",
+        "publicbotport": "8443",
+        "privatekey": "",
+        "certificate": "",
+        "useselfsignedcertificate": false,
+        "sslterminated": false,
+        "verboselogging": false
+    },
+    {
+        "id": "8d71170cb9e4c2fa",
+        "type": "ui_group",
+        "name": "Room status[H106]",
+        "tab": "d18a4ed390cc0a38",
+        "order": 3,
+        "disp": true,
+        "width": "5",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "f999e0d74b6a91ce",
+        "type": "ui_group",
+        "name": "Global weather report",
+        "tab": "d18a4ed390cc0a38",
+        "order": 4,
+        "disp": true,
+        "width": "5",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "b23176225cacfcf9",
+        "type": "ui_group",
+        "name": "Everybody data",
+        "tab": "d18a4ed390cc0a38",
+        "order": 5,
+        "disp": true,
+        "width": 10,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "625edf5398edab7e",
+        "type": "ui_group",
+        "name": "Broker Last Will",
+        "tab": "d18a4ed390cc0a38",
+        "order": 6,
+        "disp": true,
+        "width": "5",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "226b9b099aa57d29",
+        "type": "ui_group",
+        "d": true,
+        "name": "everybody data",
+        "tab": "88642c9cb6f7b06b",
+        "order": 2,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "d18a4ed390cc0a38",
+        "type": "ui_tab",
+        "name": "Soorya Weather Dashboard",
+        "icon": "dashboard",
+        "order": 1,
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "88642c9cb6f7b06b",
+        "type": "ui_tab",
+        "name": "home",
+        "icon": "dashboard",
+        "order": 2,
+        "disabled": true,
+        "hidden": false
+    }
+]

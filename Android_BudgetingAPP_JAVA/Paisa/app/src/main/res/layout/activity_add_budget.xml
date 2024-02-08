@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:gravity="center_vertical"
+    android:orientation="vertical"
+    android:padding="16dp"
+    tools:context=".budget.AddBudget">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:text="Enter budget detail"
+        android:textColor="@color/design_default_color_error"
+        android:textAllCaps="false"
+        android:textSize="40dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:text="Enter in eur"
+        android:textColor="@color/black"
+        android:textAllCaps="false"
+        android:textSize="25dp"/>
+
+    <!-- Password  -->
+    <EditText
+        android:id="@+id/EnterAddBudget"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:inputType="number"
+        android:hint="Enter budget Amount"
+         />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:text="Budget month"
+        android:textColor="@color/black"
+        android:textAllCaps="false"
+        android:textSize="25dp"/>
+
+    <!-- Repeat Password  -->
+    <EditText
+        android:id="@+id/EnterAddMonth"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:hint="month"
+        />
+
+    <!-- Login Button -->
+    <Button
+        android:id="@+id/saveAddBudget"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Save" />
+
+</LinearLayout>

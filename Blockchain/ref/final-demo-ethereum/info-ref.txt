@@ -1,0 +1,48 @@
+node1=0x049F741544Bc885CDDd50BaFb01dfE78Fc4f23AC
+pwd=12345
+
+node2=0x46Ba548AbC13366912e5D187D5Df82219eE7f132
+pwd=12345
+
+node3=0xB90bcFd7D6A04635b6e3375E1c3Dcf4d02bf798e
+pwd=12345
+
+node4=0x60f9C7346406b293a6a780663cd9A6D4e0583633
+pwd=12345
+
+eth.getBalance("0x60f9C7346406b293a6a780663cd9A6D4e0583633")
+
+web3.fromWei(eth.getBalance("0x049F741544Bc885CDDd50BaFb01dfE78Fc4f23AC"), "ether")
+web3.fromWei(eth.getBalance("0x46Ba548AbC13366912e5D187D5Df82219eE7f132"), "ether")
+
+enode=681546aa351f8cf3b3e3c4404a4dd6b9975acc82488cc280889c53412a1072ec83cc0889bb10bfdcb4a66fd3fa7014cca2070c0d169f04121ff12ba2ec123ca3@127.0.0.1:0?discport=30301
+
+geth --datadir "./data"  --port 30304 --bootnodes enode://681546aa351f8cf3b3e3c4404a4dd6b9975acc82488cc280889c53412a1072ec83cc0889bb10bfdcb4a66fd3fa7014cca2070c0d169f04121ff12ba2ec123ca3@127.0.0.1:0?discport=30301 --rpc.enabledeprecatedpersonal --authrpc.port 8547 --allow-insecure-unlock  --http --http.corsdomain="https://remix.ethereum.org" --http.api web3,eth,debug,personal,net --networkid 123456 --unlock 0x049F741544Bc885CDDd50BaFb01dfE78Fc4f23AC --password password.txt  --mine --miner.etherbase=0x049F741544Bc885CDDd50BaFb01dfE78Fc4f23AC --syncmode full console
+
+geth --datadir ./data init ../genesis.json
+
+bootnode -nodekey boot.key -verbosity 7 -addr "127.0.0.1:30301"
+
+node1:
+geth --datadir "./data"  --port 30304 --bootnodes enode://{ YOUR_VALUE } --authrpc.port 8547 --ipcdisable --allow-insecure-unlock  --http --http.corsdomain="https://remix.ethereum.org" --http.api web3,eth,debug,personal,net --networkid { NETWORK_ID } --unlock { ADDRESS_NODE1 } --password { PASSWORD_FILE_NAME_EXTENSION }  --mine --miner.etherbase= { SIGNER_ADDRESS }
+geth --datadir "./data"  --port 30304 --bootnodes enode://681546aa351f8cf3b3e3c4404a4dd6b9975acc82488cc280889c53412a1072ec83cc0889bb10bfdcb4a66fd3fa7014cca2070c0d169f04121ff12ba2ec123ca3@127.0.0.1:0?discport=30301 --rpc.enabledeprecatedpersonal  --allow-insecure-unlock  --http --authrpc.port "8551" --http.corsdomain="https://remix.ethereum.org" --http.api web3,eth,debug,personal,net --networkid 123456 --unlock 0x049F741544Bc885CDDd50BaFb01dfE78Fc4f23AC --password password.txt  --mine --miner.etherbase=0x049F741544Bc885CDDd50BaFb01dfE78Fc4f23AC
+
+node3:
+geth --datadir "./data"  --port 30306 --bootnodes enode://10a935995a22e459cd0b4b73ab29d36e9e2c26e865f323d0757b004212c7bea7262c4e0935ef005c835fe77769fc063f382c1011cca1229591b56a64a5f06545@141.45.212.243:30304  --networkid 123456 --ipcdisable --allow-insecure-unlock --http --authrpc.port "8546" --unlock 0xB90bcFd7D6A04635b6e3375E1c3Dcf4d02bf798e --password password.txt
+node4:
+geth --datadir "./data"  --port 30308 --bootnodes enode://10a935995a22e459cd0b4b73ab29d36e9e2c26e865f323d0757b004212c7bea7262c4e0935ef005c835fe77769fc063f382c1011cca1229591b56a64a5f06545@141.45.212.243:30304  --networkid 123456 --ipcdisable --allow-insecure-unlock --http --authrpc.port "8552" --unlock 0x60f9C7346406b293a6a780663cd9A6D4e0583633 --password password.txt
+node2
+geth --datadir "./data"  --port 30309 --bootnodes enode://681546aa351f8cf3b3e3c4404a4dd6b9975acc82488cc280889c53412a1072ec83cc0889bb10bfdcb4a66fd3fa7014cca2070c0d169f04121ff12ba2ec123ca3@127.0.0.1:0?discport=30301  -authrpc.port 8556 --networkid 123456 --unlock 0x46Ba548AbC13366912e5D187D5Df82219eE7f132 --password password.txt
+//node4
+//geth --datadir "./data"  --port 30308 --bootnodes enode://10a935995a22e459cd0b4b73ab29d36e9e2c26e865f323d0757b004212c7bea7262c4e0935ef005c835fe77769fc063f382c1011cca1229591b56a64a5f06545@141.45.212.243:30304  --authrpc.port 8552 --networkid 123456 --unlock 0x60f9C7346406b293a6a780663cd9A6D4e0583633 --password password.txt
+
+enode://10a935995a22e459cd0b4b73ab29d36e9e2c26e865f323d0757b004212c7bea7262c4e0935ef005c835fe77769fc063f382c1011cca1229591b56a64a5f06545@141.45.243.180:30308
+
+eth.getBalance("0x46Ba548AbC13366912e5D187D5Df82219eE7f132")
+
+netstat -tulnap | grep :*port_num*
+
+
+eth.sendTransaction({from:eth.coinbase, to:"0x60f9C7346406b293a6a780663cd9A6D4e0583633", value:web3.toWei(0.000001,"ether"),gasPrice:web3.utils.toWei(4, 'gwei')});
+
+admin.addPeer("enode://90b7cbbaee94ab6e5bc7c5e8080bf8e2dfed5047b7c19ac61ee82511bef40faf9be2066258228ce7a71ab97b508dbef3c8f50fcf31dedfd43f2f0abd7f618db9@172.129.23.46:30303?discport=0")

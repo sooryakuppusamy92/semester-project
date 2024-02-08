@@ -1,0 +1,26 @@
+ctrl -b c new window1
+ctrl b , -rename window
+ctrl b p-previous window
+ctrl b n -next window
+ctrl b p-list window
+
+
+sudo apt install tmux
+
+tmux
+
+Ctrl+b " Split current pane horizontally into two panes
+
+Ctrl+b % Split current pane vertically into two panes
+
+Ctrl+b o Go to the next pane
+
+Ctrl+b ; Toggle between the current and previous pane
+
+Ctrl+b x Close the current pane
+
+Ctrl+b d keep your terminal running in background (you can close the terminal even if a socket is running.
+
+Ctrl+b w list your panes (e.g. after reopening the terminal)
+
+Ctrl+b [ Activate scroll. Use ESC to exit.

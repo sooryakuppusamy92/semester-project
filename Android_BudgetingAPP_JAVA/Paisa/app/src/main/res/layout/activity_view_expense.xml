@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:padding="16dp"
+    tools:context=".budget.ViewExpense">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:text="View Expense details"
+        android:textColor="@color/design_default_color_error"
+        android:textAllCaps="false"
+        android:gravity="top"
+        android:textSize="40dp"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:text="Budget Month"
+        android:textColor="@color/black"
+        android:textAllCaps="false"
+        android:textSize="25dp"/>
+
+    <!-- Password  -->
+    <EditText
+        android:id="@+id/ViewExpenseMonth"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:hint="Month"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:text="Total Budget Amount"
+        android:textColor="@color/black"
+        android:textAllCaps="false"
+        android:textSize="25dp"/>
+    <!-- Repeat Password  -->
+    <EditText
+        android:id="@+id/ViewExpenseBudget"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:hint="budget"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:text="Remaining money to spend"
+        android:textColor="@color/black"
+        android:textAllCaps="false"
+        android:textSize="25dp"/>
+
+    <EditText
+        android:id="@+id/ViewExpenseBudgetLeft"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:hint="Budget Left"
+        />
+
+    <!-- Login Button -->
+
+
+</LinearLayout>

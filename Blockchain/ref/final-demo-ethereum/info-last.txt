@@ -1,0 +1,53 @@
+node1=0x91FD9B466dF5A24E4435D0820B91d785F7B6963F
+pwd=1234
+
+node2=0x5486cA1846a27B77214C2B8983073604b8aB22Cc
+node3=0x0c38643F93f45Ab750dcb57298511d91dB3F3439
+
+enode://35e14a77cd211bad525d6e24b410cf26d7084ebf59f270126a7c3380068698082edf79940da691c5e587e68767b2ba9a6e6025a4af5bc8abaa08c59cc8c3efdd@127.0.0.1:0?discport=30301
+
+
+geth --datadir "./data" --port 30304 --bootnodes enode://35e14a77cd211bad525d6e24b410cf26d7084ebf59f270126a7c3380068698082edf79940da691c5e587e68767b2ba9a6e6025a4af5bc8abaa08c59cc8c3efdd@127.0.0.1:0?discport=30301 --rpc.enabledeprecatedpersonal --allow-insecure-unlock --http --authrpc.port "8551" --http.corsdomain="https://remix.ethereum.org" --http.api web3,eth,debug,personal,net --networkid 123456 --unlock 0x91FD9B466dF5A24E4435D0820B91d785F7B6963F --password pwd.txt --mine --miner.etherbase=0x91FD9B466dF5A24E4435D0820B91d785F7B6963F
+geth --datadir "./data" --port 30307 --bootnodes enode://35e14a77cd211bad525d6e24b410cf26d7084ebf59f270126a7c3380068698082edf79940da691c5e587e68767b2ba9a6e6025a4af5bc8abaa08c59cc8c3efdd@141.45.212.243?discport=30301 --networkid 123456 --ipcdisable --allow-insecure-unlock --authrpc.port "8549" --unlock 0x0c38643F93f45Ab750dcb57298511d91dB3F3439 --password pwd.txt
+
+enode://4d6c1cb62b37ad08d1b725ba1e297b6d35a29f42dd8d69e6f745b33508314eb2dcf5d035a4c9cd9545a852b23a69ad2774c5a7f81bee12ef7712fc547fd658cb@141.45.212.243:30304
+
+geth --datadir "./data" --port 30306 --bootnodes enode://4d6c1cb62b37ad08d1b725ba1e297b6d35a29f42dd8d69e6f745b33508314eb2dcf5d035a4c9cd9545a852b23a69ad2774c5a7f81bee12ef7712fc547fd658cb@141.45.212.243:30304 --networkid 123456 --ipcdisable --allow-insecure-unlock --authrpc.port "8546" --unlock 0x5486cA1846a27B77214C2B8983073604b8aB22Cc --password pwd.txt
+
+geth --datadir "./data" --port 30307 --bootnodes enode://4d6c1cb62b37ad08d1b725ba1e297b6d35a29f42dd8d69e6f745b33508314eb2dcf5d035a4c9cd9545a852b23a69ad2774c5a7f81bee12ef7712fc547fd658cb@141.45.212.243:30307 --networkid 123456 --ipcdisable --allow-insecure-unlock --authrpc.port "8549" --unlock 0x0c38643F93f45Ab750dcb57298511d91dB3F3439 --password pwd.txt
+
+eth.getBalance(eth.coinbase)
+eth.sendTransaction({from:"0x46Ba548AbC13366912e5D187D5Df82219eE7f132", to:"0x60f9C7346406b293a6a780663cd9A6D4e0583633", value:web3.toWei(0.000001,"ether"),gasPrice:web3.toWei(1, 'gwei')});
+
+
+enode://0307214bca56dcb255854327c98f4260c1fca66823808859aab12988fdefd59673c7d3bb28849b9db899ec66a904fcbe6c1d24c34e82e97bfc6c91a7ffb7ac7a@141.45.243.187:30307
+
+
+
+
+boot node enode:
+enode://35e14a77cd211bad525d6e24b410cf26d7084ebf59f270126a7c3380068698082edf79940da691c5e587e68767b2ba9a6e6025a4af5bc8abaa08c59cc8c3efdd@127.0.0.1:0?discport=30301
+
+node1:
+geth --datadir "./data" --port 30304 --bootnodes enode://35e14a77cd211bad525d6e24b410cf26d7084ebf59f270126a7c3380068698082edf79940da691c5e587e68767b2ba9a6e6025a4af5bc8abaa08c59cc8c3efdd@127.0.0.1:0?discport=30301 --rpc.enabledeprecatedpersonal --allow-insecure-unlock --http --authrpc.port "8551" --http.corsdomain="https://remix.ethereum.org" --http.api web3,eth,debug,personal,net --networkid 123456 --unlock 0x91FD9B466dF5A24E4435D0820B91d785F7B6963F --password pwd.txt --mine --miner.etherbase=0x91FD9B466dF5A24E4435D0820B91d785F7B6963F
+
+node1 enode:
+enode://4d6c1cb62b37ad08d1b725ba1e297b6d35a29f42dd8d69e6f745b33508314eb2dcf5d035a4c9cd9545a852b23a69ad2774c5a7f81bee12ef7712fc547fd658cb@141.45.212.243:30304
+
+node2(my local node):
+
+geth --datadir "./data" --port 30309 --bootnodes enode://4d6c1cb62b37ad08d1b725ba1e297b6d35a29f42dd8d69e6f745b33508314eb2dcf5d035a4c9cd9545a852b23a69ad2774c5a7f81bee12ef7712fc547fd658cb@141.45.212.243:30304 --networkid 123456 --ipcdisable --allow-insecure-unlock --authrpc.port "8567" --unlock 0x5486cA1846a27B77214C2B8983073604b8aB22Cc --password pwd.txt
+
+node 3(jerem node):
+
+geth --datadir "./data" --port 30307 --bootnodes enode://4d6c1cb62b37ad08d1b725ba1e297b6d35a29f42dd8d69e6f745b33508314eb2dcf5d035a4c9cd9545a852b23a69ad2774c5a7f81bee12ef7712fc547fd658cb@141.45.212.243:30307 --networkid 123456 --ipcdisable --allow-insecure-unlock --authrpc.port "8549" --unlock 0x0c38643F93f45Ab750dcb57298511d91dB3F3439 --password pwd.txt
+
+
+eth.getBalance("0x91FD9B466dF5A24E4435D0820B91d785F7B6963F")
+eth.getBalance("0x5486cA1846a27B77214C2B8983073604b8aB22Cc")
+eth.getBalance("0x0c38643F93f45Ab750dcb57298511d91dB3F3439")
+eth.sendTransaction({from:"0x91FD9B466dF5A24E4435D0820B91d785F7B6963F", to:"0x5486cA1846a27B77214C2B8983073604b8aB22Cc", value:web3.toWei(0.000001,"ether"),gasPrice:web3.toWei(1, 'gwei')});
+
+
+node7:
+0x50cE927aCC20Af28D420AA2c24a016E123db34aB

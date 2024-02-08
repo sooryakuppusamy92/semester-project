@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:gravity="center_vertical"
+    android:orientation="vertical"
+    android:padding="16dp"
+    tools:context=".account.SignUp">
+
+    <!-- Username  -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:text="Enter Below details"
+        android:textColor="@color/design_default_color_error"
+        android:textAllCaps="true"
+        android:textSize="20dp"/>
+
+
+    <EditText
+        android:id="@+id/Usrname"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:hint="Enter Username"
+        android:inputType="text" />
+
+    <!-- Password  -->
+    <EditText
+        android:id="@+id/EnterPwd"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:hint="Enter Password"
+        android:inputType="textPassword" />
+
+    <!-- Repeat Password  -->
+    <EditText
+        android:id="@+id/RepeatPassword"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:hint="Repeat the Password"
+        android:inputType="textPassword" />
+
+    <!-- Login Button -->
+    <Button
+        android:id="@+id/SaveButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Save" />
+
+</LinearLayout>
